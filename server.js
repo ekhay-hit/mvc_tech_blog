@@ -1,4 +1,5 @@
 const express = require("express");
+const sequelize = require("./config/connection.js")
 const path = require("path");
 
 //initializing the port and app
@@ -11,7 +12,9 @@ app.use(express.urlencoded({extended:true}));
 
 
 
+sequelize.sync().then(()=>{
 
-app.listen(PORT, ()=>{
-    console.log(`Listening at port ${PORT}`);
+    app.listen(PORT, ()=>{
+        console.log(`Listening at port ${PORT}`);
+    })
 })
