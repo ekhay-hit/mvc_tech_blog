@@ -24,8 +24,15 @@ app.use(express.urlencoded({extended:true}));
 // api
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.get("/" ,async(req,res)=>{
+    res.render('./layouts/main')
+})
+app.get("/login" ,async(req,res)=>{
     res.render('login')
+})
+app.get("/signup" ,async(req,res)=>{
+    res.render('signup')
 })
 
 
