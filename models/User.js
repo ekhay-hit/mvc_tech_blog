@@ -11,7 +11,7 @@ User.init(
             primaryKey: true,
             autoIncrement:true
         },
-        mame:{
+        name:{
             type: DataTypes.STRING,
             allowNull:false,
         },
