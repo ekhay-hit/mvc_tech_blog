@@ -2,6 +2,7 @@ const express = require("express");
 const sequelize = require("./config/connection.js")
 const path = require("path");
 const model= require('./models/User.js')
+const routes = require("./controllers");
 // handlebars
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
@@ -24,16 +25,17 @@ app.use(express.urlencoded({extended:true}));
 // api
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(routes);
 
-app.get("/" ,async(req,res)=>{
-    res.render('./layouts/main')
-})
-app.get("/login" ,async(req,res)=>{
-    res.render('login')
-})
-app.get("/signup" ,async(req,res)=>{
-    res.render('signup')
-})
+// app.get("/" ,async(req,res)=>{
+//     res.render('./layouts/main')
+// })
+// app.get("/login" ,async(req,res)=>{
+//     res.render('login')
+// })
+// app.get("/signup" ,async(req,res)=>{
+//     res.render('signup')
+// })
 
 
 sequelize.sync().then(()=>{
