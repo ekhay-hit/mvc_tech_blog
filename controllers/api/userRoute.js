@@ -9,15 +9,18 @@ const User = require('../../models/User');
 // get request to return login page
 router.get("/login" ,async(req,res)=>{
     res.render('login')
-})
+});
+router.get("/profile" ,async(req,res)=>{
+    res.render('profile')
+});
 // git request to return signup page
 router.get("/signup" ,async(req,res)=>{
     res.render('signup')
-})
+});
 
 // POST REQUEST FOR THE USER
 // post request for creating new user*******************************************************************
-
+// /api/users/signup
 router.post("/signup", async (req, res)=>{
     try{
         // assinging the new user info to varaible newUserData

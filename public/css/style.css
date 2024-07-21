@@ -28,6 +28,11 @@
     background: var(--primary);
     color: white;
     border-bottom-style: solid;
+    a{
+      color: white;
+      text-decoration: none;
+      
+     }
   }
   
   main {
