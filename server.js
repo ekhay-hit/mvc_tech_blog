@@ -1,8 +1,13 @@
 const express = require("express");
+// import config connection for database
 const sequelize = require("./config/connection.js")
 const path = require("path");
+// import user model
 const model= require('./models/User.js')
+// import controllers
 const routes = require("./controllers");
+//import for session
+const session = require("express-session")
 // handlebars
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
@@ -16,6 +21,16 @@ app.engine("handlebars",hbs.engine);
 // set the view to use handlebars
 app.set("view engine","handlebars")
 
+// set up session
+const mysession ={
+    secret: " ",
+    resave:false,
+    saveUninitialized:true,
+}
+
+// use section
+// use session
+app.use(session(mysession))
 
 // parse json
 app.use(express.json());

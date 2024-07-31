@@ -63,17 +63,29 @@ router.post("/login", async(req,res) =>{
             res.status(400).json({message: "Wrong login credintial"})
         }
 
-        res.status(200).json({message: "you are logged in successfully"})
-    
-        
+        req.session.save(()=>{
+            req.session.user_id = loginData.id;
+            req.session.user_name = loginData.name;
+            req.session.logged_in = true;
+            res.status(200).json({user: loginData, message: "you are logged in successfully"})
+        })
 
     }catch(err){
         res.status(500).json({message:"500 server error"})
         // res.status(500).json(err);
-
     }
 
 })
 
+// post request for logout
+router.post("/logout",(req, res)=>{
+    if(req.session.loggedIn){
+        req.session.destroy(()=>{
+            res.status(204).end();
+        })
+    }else{
+        res.status(404).end();
+    }
+})
 
 module.exports=router;
