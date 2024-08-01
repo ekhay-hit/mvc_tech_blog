@@ -21,7 +21,7 @@ if(email && password){
 
     if(res.ok){
 
-        document.location.replace("/api/user/profile")
+        document.location.replace("/")
 
     }else{
         console.log(data.message);

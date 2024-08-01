@@ -1,0 +1,29 @@
+.dashboard{
+    margin-top:150px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:5px;
+    width: 60%;
+    padding:20px;
+    background-color: rgb(195, 192, 188);
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px 4px gray;
+
+}
+
+.create-post{
+    background-color: rgb(176, 175, 173); ;
+   box-shadow:2px 2px 3px 3px rgb(168, 165, 162);
+   padding: 10px;
+   border-radius: 25px;
+}
+
+
+.btn-create{
+    margin:auto;
+    margin-top:20px;
+    border-radius: 20px;
+    width: 150px;
+    background-color: rgb(43, 43, 168);
+    color:white;
+}
