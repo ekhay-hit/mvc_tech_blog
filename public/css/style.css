@@ -2,10 +2,9 @@
     --primary: #989AA3;
     --secondary: #f5a25d;
     --tertiary: #fa7f72;
-    --quatrinary: #B8C6E3;
+    --quatrinary: #adb4c3;
     --light: #ebebeb;
     --dark: #182c23;
-    --error: rgb(228, 46, 1);
     --border-radius: 0.3rem;
   }
   
@@ -13,6 +12,7 @@
     font-family: Arial;
     margin: 0;
     display: flex;
+    font-size: 25px;
     flex-direction: column;
     min-height: 100vh;
     justify-content: flex-start;
@@ -25,7 +25,7 @@
     height: 100px;
     gap:20px;
     text-align: center;
-    background: var(--primary);
+    background: rgb(169, 167, 167);
     color: white;
     border-bottom-style: solid;
     a{

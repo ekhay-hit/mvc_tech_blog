@@ -35,7 +35,7 @@ router.post("/signup", async (req, res)=>{
 
     }catch(err){
         // res.status(500).json({message:"creating new user failed"})
-        console.log("I am here at the error");
+       
         res.status(500).json(err);
 
     }
@@ -44,10 +44,14 @@ router.post("/signup", async (req, res)=>{
 // post request for user logi ************************************************************************
 
 router.post("/login", async(req,res) =>{
-
+console.log('I am login api post');
     try{
+        console.log("I am her in try");
         // find user email if there is data
+        console.log(req.body);
         const loginData = await User.findOne({where:{email:req.body.email}});;
+
+        console.log(loginData);
 
         if(!loginData){
             res.status(404).json({message:"please provide your login credintial"})
@@ -58,7 +62,8 @@ router.post("/login", async(req,res) =>{
             const pwIsValid = await bcrypt.compare(
                 req.body.password, loginData.password
             )    
-        
+        console.log("password is");
+        console.log(pwIsValid);
         if (!pwIsValid){
             res.status(400).json({message: "Wrong login credintial"})
         }
@@ -68,11 +73,14 @@ router.post("/login", async(req,res) =>{
             req.session.user_name = loginData.name;
             req.session.logged_in = true;
             res.status(200).json({user: loginData, message: "you are logged in successfully"})
+        
         })
+        // res.status(200).json({message:"loggedin successfull"})
 
     }catch(err){
-        res.status(500).json({message:"500 server error"})
-        // res.status(500).json(err);
+        // res.status(500).json({message:"500 server error"})
+        res.status(500).json(err);
+        console.log(err);
     }
 
 })

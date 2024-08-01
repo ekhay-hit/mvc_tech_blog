@@ -6,7 +6,7 @@ async function signupHandler(e){
     e.preventDefault();
 console.log("I am here in fetch call");
 const name = document.querySelector("#name-signup").value.trim();
-const email = document.getElementById("email-signup").value.trim();
+const email = document.getElementById("email-signup").value.trim().toLowerCase();
 const password= document.getElementById("password-signup").value.trim();
 console.log(`name ${name} email ${email} pw ${password}`);
     if ( name && email && password ){
@@ -21,9 +21,9 @@ console.log(`name ${name} email ${email} pw ${password}`);
             const data = await response.json();
     console.log("Response data: ", data);
     console.log("User created successfully");
-    document.location.replace("/api/user/profile");
+    document.location.replace("/api/user/login");
         }else{
-            console.error("Failed to create user. Status: ", response.status);
+            console.error("Failed to create user ", response.status);
         }
     }
 };
