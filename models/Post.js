@@ -1,5 +1,5 @@
-const sequelize = require("../config/connection");
-const {Model, DataTypes} = require("sequilize");
+const {Model, DataType, DataTypes}= require("sequelize");
+const sequelize = require("../config/connection")
 
 class Post extends Model{};
 
@@ -29,9 +29,9 @@ Post.init(
     },
     {
         sequelize,
-        freezeTabelName:true,
+        freezeTableName:true,
         underscored: true,
-        modleName:'post'
+        modelName:'post'
     }
 )
 
