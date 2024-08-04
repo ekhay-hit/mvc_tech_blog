@@ -11,7 +11,7 @@ const session = require("express-session")
 // handlebars
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
-// const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 //initializing the port and app
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -32,9 +32,9 @@ const mysession = {
     },
     resave:false,
     saveUninitialized: true,
-    // store: new SequelizeStore({
-    //   db: sequelize,
-    // }),
+    store: new SequelizeStore({
+      db: sequelize,
+    }),
   };
 // use section
 // use session

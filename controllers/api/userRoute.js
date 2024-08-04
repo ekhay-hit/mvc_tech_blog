@@ -31,7 +31,14 @@ router.post("/signup", async (req, res)=>{
         const newUser = await User.create(newUserData);
 
         // res.status(200).json({message:'user created successfully'})
-        res.status(200).json({newUser,message:"user account created successfully"});
+        req.session.save(()=>{
+            req.session.user_id = newUser.id;
+            req.session.user_name = newUser.name;
+            req.session.logged_in = true;
+            res.status(200).json({newUser, message: "user account created successfully"})
+        
+        })
+        // res.status(200).json({newUser,message:"user account created successfully"});
 
     }catch(err){
         // res.status(500).json({message:"creating new user failed"})
@@ -70,10 +77,14 @@ console.log('I am login api post');
         }
 
         req.session.save(()=>{
-            req.session.user_id = loginData.id;
-            req.session.user_name = loginData.name;
+            req.session.id = loginData.id;
+            req.session.name = loginData.name;
             req.session.logged_in = true;
-            res.status(200).json({user: loginData, message: "you are logged in successfully"})
+
+            console.log("Here is the session");
+            console.log(req.session);
+
+            res.status(200).json({user_name:req.session.name, logged_in:req.session.logged_in, message: "you are logged in successfully"});
         
         })
         // res.status(200).json({message:"loggedin successfull"})
