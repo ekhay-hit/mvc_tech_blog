@@ -22,8 +22,26 @@
 .btn-create{
     margin:auto;
     margin-top:20px;
-    border-radius: 20px;
-    width: 150px;
-    background-color: rgb(43, 43, 168);
+    border-radius: 5px;
+    width: 100%;
+    background-color: rgb(168, 168, 181);
     color:white;
+}
+
+/* style for new post button */
+.new-post{
+    position: absolute;
+    top: 75%;
+    margin-top:40px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+}
+
+.new-postBtn{
+    width: 200px;
+    background-color: rgb(48, 48, 50);
+    border-radius: 10px;
+    color:white;
+
 }

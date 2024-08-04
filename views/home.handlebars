@@ -1,6 +1,6 @@
 <div class="posts-list">
 {{#each posts as |post|}}
-<div class="post">
+<div class="post" data-postid="{{post.id}}" data-userid="{{post.user.id}}">
     <div class="post-header">
         <button class="post-title">{{post.title}}</button>
         <h5>Posted by: {{post.user.name}} on {{post.createdAt}}</h5>
@@ -16,20 +16,20 @@
 
 </div>
      
-            {{!-- {{#each comments}} --}}
+            {{#each comments}}
     <div class="comment-section">
         <div class="cmt-header"></div>
 
      <div class="comment-content">
 
-        <p >This is ther first comment</p>
+        <p >{{content}}</p>
 
-        <h4>-houssine</h4>
+        <h4>- {{user.name}}</h4>
      </div>   
 
 
     </div>
-  {{!-- {{/each}} --}}
+  {{/each}}
 {{/each}}
 </div>
 <script type="text/javascript" src="/js/home.js"></script>
