@@ -50,3 +50,25 @@
 
     }
 }
+
+/* comment holder styling */
+
+.comment-section{
+    width: 80%;
+  
+   border: 2px solid rgb(156,88,88) ;
+
+   .cmt-header{
+    width: 100%;
+    margin:0px;
+    height: 40px;
+    background-color: rgb(93, 21, 21);
+   }
+
+    .comment-content{
+        padding:20px; 
+       
+    }
+   
+
+}
