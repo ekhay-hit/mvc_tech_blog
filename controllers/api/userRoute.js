@@ -59,7 +59,7 @@ console.log('I am login api post');
         console.log(req.body);
         const loginData = await User.findOne({where:{email:req.body.email}});;
 
-        console.log(loginData);
+        // console.log(loginData);
 
         if(!loginData){
             res.status(404).json({message:"please provide your login credintial"})
@@ -70,21 +70,22 @@ console.log('I am login api post');
             const pwIsValid = await bcrypt.compare(
                 req.body.password, loginData.password
             )    
-        console.log("password is");
-        console.log(pwIsValid);
+        
         if (!pwIsValid){
             res.status(400).json({message: "Wrong login credintial"})
         }
 
         req.session.save(()=>{
-            req.session.id = loginData.id;
+            req.session.userId = parseInt(loginData.id);
             req.session.name = loginData.name;
             req.session.logged_in = true;
 
             console.log("Here is the session");
+            console.log(loginData.id);
+            console.log(req.session.userId);
             console.log(req.session);
 
-            res.status(200).json({user_name:req.session.name, logged_in:req.session.logged_in, message: "you are logged in successfully"});
+            res.status(200).json({user_name:req.session.name, logged_in:req.session.logged_in, user_id:req.session.userId ,message: "you are logged in successfully"});
         
         })
         // res.status(200).json({message:"loggedin successfull"})
@@ -97,11 +98,13 @@ console.log('I am login api post');
 
 })
 
-// post request for logout
+// post request for logout /api/user/logout
 router.post("/logout",(req, res)=>{
-    if(req.session.loggedIn){
+    console.log("you are in logut post");
+    if(req.session.logged_in){
         req.session.destroy(()=>{
             res.status(204).end();
+
         })
     }else{
         res.status(404).end();

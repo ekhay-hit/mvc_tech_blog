@@ -37,7 +37,7 @@ route.get("", async(req,res)=>{
     // console.log(posts);
 
 
-    res.render("home",{posts, logged_in: req.session.logged_in, user_name:req.session.name})
+    res.render("home",{posts, logged_in: req.session.logged_in, user_name:req.session.name, user_id:req.session.userId})
 
     }catch(err){
         res.status(500).json(err);
@@ -45,8 +45,9 @@ route.get("", async(req,res)=>{
     }
 })
 // return dashboard **********************************************************************
-route.get("/dashboard",(req,res)=>{
-    res.render("dashboard")
+route.get("/dashboard", async(req,res)=>{
+    console.log();
+    res.render("dashboard",{ logged_in: req.session.logged_in, user_name:req.session.name, user_id:req.session.userId})
 })
 
 module.exports= route;

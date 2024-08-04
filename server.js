@@ -23,7 +23,7 @@ app.set("view engine","handlebars")
 
 // set up session
 const mysession = {
-    secret: 'secret',
+    secret: 'sec secret sec',
     cookie: {
       maxAge: 300000,
       httpOnly: true,

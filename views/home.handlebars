@@ -1,5 +1,4 @@
-<div class="posts-list">
-    <h2>{{logged_in}}</h2>
+<div class="posts-list">   
 {{#each posts as |post|}}
 <div class="post" data-postid="{{post.id}}" data-userid="{{post.user.id}}">
     <div class="post-header">
@@ -9,7 +8,7 @@
     <p class=" content">{{post.content}}</p>
     <div class="comment-area hidden">
         <h4 class=" comment-header">Comment</h4>
-        <textarea placeholder="Write a comment"></textarea>
+        <textarea placeholder="Write a comment" data-userid="{{user_id}}"></textarea>
 
     </div>
 
