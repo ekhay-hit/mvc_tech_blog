@@ -22,6 +22,7 @@ router.post("/", async (req, res) =>{
     }
 })
 
+
 // ********************************* Get requist to return all the post 
 module.exports = router;
 

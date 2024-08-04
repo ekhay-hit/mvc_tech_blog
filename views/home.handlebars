@@ -1,16 +1,17 @@
 <div class="posts-list">
-
+{{#each posts as |post|}}
 <div class="post">
     <div class="post-header">
-        <h3 class="post-title">Why MVC is so important</h3>
-        <h5>Posted by houssine on 5/8/2020</h5>
+        <button class="post-title">{{post.title}}</button>
+        <h5>Posted by: {{post.user.name}} on {{post.createdAt}}</h5>
     </div>
-    <p class=" content">MVC allows developers to maintina a true separation of concerns , devising their code between the Model layer for data, the View layer for design, and the Controller layer for application logic</p>
+    <p class=" content">{{post.content}}</p>
     <div class="comment-area">
         <h4 class=" comment-header">Comment</h4>
         <textarea placeholder="Write a comment"></textarea>
 
     </div>
-
 </div>
+{{/each}}
 </div>
+<script type="text\javascript" src="../public/js/home.js"></script>

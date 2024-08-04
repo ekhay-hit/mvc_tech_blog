@@ -3,7 +3,7 @@ const express = require("express");
 const sequelize = require("./config/connection.js")
 const path = require("path");
 // import user model
-const model= require('./models/User.js')
+const model= require('./models/index.js')
 // import controllers
 const routes = require("./controllers");
 //import for session
@@ -11,7 +11,7 @@ const session = require("express-session")
 // handlebars
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
-
+// const SequelizeStore = require('connect-session-sequelize')(session.Store);
 //initializing the port and app
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -22,12 +22,20 @@ app.engine("handlebars",hbs.engine);
 app.set("view engine","handlebars")
 
 // set up session
-const mysession ={
-    secret: " ",
+const mysession = {
+    secret: 'secret',
+    cookie: {
+      maxAge: 300000,
+      httpOnly: true,
+      secure: false,
+      sameSite: 'strict',
+    },
     resave:false,
-    saveUninitialized:true,
-}
-
+    saveUninitialized: true,
+    // store: new SequelizeStore({
+    //   db: sequelize,
+    // }),
+  };
 // use section
 // use session
 app.use(session(mysession))
@@ -42,15 +50,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-// app.get("/" ,async(req,res)=>{
-//     res.render('./layouts/main')
-// })
-// app.get("/login" ,async(req,res)=>{
-//     res.render('login')
-// })
-// app.get("/signup" ,async(req,res)=>{
-//     res.render('signup')
-// })
 
 
 sequelize.sync({force:false}).then(()=>{

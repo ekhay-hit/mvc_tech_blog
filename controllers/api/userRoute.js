@@ -26,17 +26,18 @@ router.post("/signup", async (req, res)=>{
         // assinging the new user info to varaible newUserData
         const newUserData = req.body;
         // encrypt the password first before creating the user
-        newUserData.password = await bcrypt.hash(req.body.password, 8);
+        // newUserData.password = await bcrypt.hash(req.body.password, 8);
 
         const newUser = await User.create(newUserData);
 
         // res.status(200).json({message:'user created successfully'})
-        res.status(200).json(newUser);
+        res.status(200).json({newUser,message:"user account created successfully"});
 
     }catch(err){
         // res.status(500).json({message:"creating new user failed"})
        
         res.status(500).json(err);
+        console.log(err);
 
     }
 });
