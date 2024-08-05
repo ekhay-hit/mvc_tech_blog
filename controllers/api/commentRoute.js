@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Comment= require("../../models/Comment")
 
 // post request to create a new comment base on the post_id and user_id
+// /api/comment/
 router.post("/", async(req, res)=>{
 
     try{

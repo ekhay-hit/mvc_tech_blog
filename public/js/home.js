@@ -18,13 +18,58 @@ function commentArea(togleCmtAreaBtn){
 
 }
 
+// ***********Function that handle add comment to a post******
+
+async function addCommentHandler(addCommentBtn){
+    console.log("button to add a comment clicked");
+    const currentPost = addCommentBtn.closest(".post");
+    
+    // getting comment content
+    const content = currentPost.querySelector("#comment-text-area").value.trim();
+
+    // getting post_id from metadata
+    const post_id = currentPost.dataset.postid;
+
+    // getting the user that loggs in from data-loggedinuserid that was set in the list of the post
+    const user_id = document.querySelector(".posts-list").getAttribute("data-loggedinuserid");
+
+    console.log(content, post_id, user_id);
+    
+    // if all required field for create new post make a fetch call
+
+    if(content && post_id && user_id){
+        const res = await fetch("/api/comment/",{
+            method:"POST",
+            body: JSON.stringify({content, post_id, user_id}),
+            headers:{"Content-Type":"application/json"},
+        })
+        const data= await res.json();
+        console.log(data);
+        if(res.ok){
+            window.location.reload();
+        }else{
+
+            alert("Failed to add comment")
+        }
+    }
+}
+
+// event listeners
 postList.addEventListener('click',(event)=>{
 
-    const togleCmtAreaBtn = event.target.closest(".post-title")
+    const togleCmtAreaBtn = event.target.closest(".post-title");
 
-    
+    const addCommentBtn= event.target.closest("#add-comment");
+
+
+//if the post title clicked     
 if(togleCmtAreaBtn){
     commentArea(togleCmtAreaBtn)
+}
+
+// if the button of add comment clicked
+if(addCommentBtn){
+    addCommentHandler(addCommentBtn)
 }
 
 

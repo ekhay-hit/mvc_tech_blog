@@ -1,14 +1,17 @@
-<div class="posts-list">   
-{{#each posts as |post|}}
+<div class="posts-list" data-loggedinuserid="{{user_id}}">   
+{{#each posts as |post user_id|}}
 <div class="post" data-postid="{{post.id}}" data-userid="{{post.user.id}}">
     <div class="post-header">
         <button class="post-title">{{post.title}}</button>
         <h5>Posted by: {{post.user.name}} on {{post.createdAt}}</h5>
     </div>
+    <h1>{{req.session.userId}}</h1>
     <p class=" content">{{post.content}}</p>
     <div class="comment-area hidden">
         <h4 class=" comment-header">Comment</h4>
-        <textarea placeholder="Write a comment" data-userid="{{user_id}}"></textarea>
+        <textarea id="comment-text-area" placeholder="Write a comment" ></textarea>
+
+        <button id="add-comment">Add comment</button>
 
     </div>
 

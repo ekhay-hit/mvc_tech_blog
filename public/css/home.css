@@ -50,6 +50,13 @@
         border: 2px solid rgb(156,88,88) ;
 
     }
+
+    button{
+        width: 100%;
+        background-color: rgb(50, 16, 16);
+        color:white;
+      
+    }
 }
 
 /* comment holder styling */
