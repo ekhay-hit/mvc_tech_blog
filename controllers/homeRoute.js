@@ -18,7 +18,7 @@ route.get("", async(req,res)=>{
                     },
                     {
                         model: Comment,
-                        attribute:['id', 'contnet'],
+                        attribute:['id', 'content'],
 
                         include:[
                                     {
@@ -46,8 +46,37 @@ route.get("", async(req,res)=>{
 })
 // return dashboard **********************************************************************
 route.get("/dashboard", async(req,res)=>{
-    console.log();
-    res.render("dashboard",{ logged_in: req.session.logged_in, user_name:req.session.name, user_id:req.session.userId})
+
+    const loggedinUserId = req.session.userId;
+      
+    try{
+        const data = await Post.findAll({
+            include:[
+                {
+                    model: User,
+                    attribute:['id', 'name']
+                }
+            ],
+
+            where:{
+                user_id : req.session.userId,
+
+            }
+
+        })
+
+        const mypost = data.map((post)=>post.get({plain:true}))
+
+      
+        res.render("dashboard",{mypost, logged_in: req.session.logged_in, user_name:req.session.name, user_id:req.session.userId})
+
+
+    }catch(err){
+        res.status(500).json(err);
+        
+    }
+  
+    
 })
 
 module.exports= route;

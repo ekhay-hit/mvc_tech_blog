@@ -1,3 +1,13 @@
+.main-dash{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    padding:10px;
+    justify-content: center;
+
+}
+
+
 .dashboard{
     margin-top:150px;
     flex-direction: row;
@@ -30,8 +40,8 @@
 
 /* style for new post button */
 .new-post{
-    position: absolute;
-    top: 75%;
+    position: relative;
+    /* top: 75%; */
     margin-top:40px;
     width: 100%;
     display:flex;
@@ -44,4 +54,24 @@
     border-radius: 10px;
     color:white;
 
+}
+
+.my-post{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 80%;
+    background-color: darkgray;
+    padding: 10px;
+    
+    .post-date{
+        padding-top:10px;
+    }
+
+    button{
+        border: none;
+        background-color: transparent;
+    }
+   
 }

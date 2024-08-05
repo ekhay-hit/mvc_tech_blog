@@ -1,5 +1,16 @@
 
-<h1>{{user_id}}</h1>
+{{!-- <h1>{{user_id}}</h1> --}}
+
+ {{#if logged_in}}
+ <div class=" main-dash">
+{{#each mypost as |post|}}
+<div class="my-post"  data-userid="{{post.user_id}}">
+    <button>{{post.title}}</button>
+    <h6 class="post-date">5/22/2024</h6>
+    
+</div>
+{{/each}}
+
 <div class="dashboard hidden d-flex justify-content-start" data-userid="{{user_id}}">
   
     <h4 class=" create-post col-12 ">Create a post</h4>
@@ -13,4 +24,6 @@
 
 <div class="new-post"><button class="new-postBtn">+ New Post</button></div>
 
+</div>
 <script type="text/javascript" src="/js/dashboard.js"></script>
+{{/if}}
