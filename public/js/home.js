@@ -2,7 +2,7 @@ const postList= document.querySelector(".posts-list");
 
 // Function that togle area 
 function commentArea(togleCmtAreaBtn){
-   console.log("you have clicked the button");
+  
    const parentPost = togleCmtAreaBtn.closest(".post")
    const cmtArea = parentPost.querySelector(".comment-area")
 

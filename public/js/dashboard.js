@@ -1,20 +1,26 @@
 const newPost = document.querySelector(".new-postBtn");
 const createPost = document.querySelector(".btn-create")
+// finding the post that need to be updated
+const updatepostBtn = document.querySelector(".main-dash");
 const form_input= document.querySelector(".form-group")
 
 // function handles showing gui for creating a new post
 
 function showCreateNewPost(){
-
+    
     // target the ui
     const newPostGUI = document.querySelector(".dashboard");
 
     // check if the ui has a hidden class and remove it or add it if not
-    if(newPostGUI.classList.contains('hidden')){
-        newPostGUI.classList.remove("hidden");
-    }else{
-        newPostGUI.classList.add('hidden');
+    if(newPostGUI){
+
+        if(newPostGUI.classList.contains('hidden')){
+            newPostGUI.classList.remove("hidden");
+        }else{
+            newPostGUI.classList.add('hidden');
+        }
     }
+
 
 }
 
@@ -54,9 +60,43 @@ if(title && content &&  user_id){
 }
 }
 
+//*****************Functin that handle opening the GUI to update or delet post and add the data of the post to it */
+
+async function updateDeletePost(myPostTitleBtn){
+    console.log("you have clicked post to update it");
+    const currentPost = myPostTitleBtn.closest(".my-post") 
+    console.log(currentPost);
+
+    //get the data of the post that is clicked
+    const post_title = currentPost.querySelector("#my-post-title").textContent.trim();
+    const post_id = currentPost.dataset.postid;
+    const post_content = currentPost.dataset.content;
+
+    // set the content to the GUI of update or delete the post
+    const showUpdateGui = document.querySelector(".update-dashboard");
+    showUpdateGui.dataset.postid = post_id;
+    document.querySelector("#update-title").value = post_title;
+    document.querySelector("#update-content").textContent = post_content;
+   
+    // after setting all the values show the box
+    showUpdateGui.classList.remove("hidden");
+
+
+}
+
 // Even listener to show hide the create new post GUI
 newPost.addEventListener("click", showCreateNewPost);
 
 // EVENT LISTENER TO CREATE A NEW POST
 
 createPost.addEventListener("click", handleNewPost)
+
+// UPDATE AND DELETE A POST 
+updatepostBtn.addEventListener("click", (event)=>{
+
+    const myPostTitleBtn = event.target.closest("#my-post-title")
+
+    if(myPostTitleBtn){
+        updateDeletePost(myPostTitleBtn);
+    }
+})

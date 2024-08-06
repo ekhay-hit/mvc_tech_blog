@@ -8,7 +8,7 @@
 }
 
 
-.dashboard{
+.dashboard, .update-dashboard{
     margin-top:150px;
     flex-direction: row;
     flex-wrap: wrap;
@@ -29,7 +29,7 @@
 }
 
 
-.btn-create{
+.btn-create , .btn-update{
     margin:auto;
     margin-top:20px;
     border-radius: 5px;

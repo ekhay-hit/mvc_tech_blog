@@ -4,22 +4,34 @@
  {{#if logged_in}}
  <div class=" main-dash">
 {{#each mypost as |post|}}
-<div class="my-post"  data-userid="{{post.user_id}}">
-    <button>{{post.title}}</button>
+<div class="my-post" data-content="{{post.content}}"  data-postid="{{post.id}}">
+    <button id="my-post-title">{{post.title}}</button>
+
     <h6 class="post-date">5/22/2024</h6>
     
 </div>
 {{/each}}
 
+               {{!-- model to update a post  --}}
+<div class="update-dashboard hidden  d-flex justify-content-start" data-postid="{{post.id}}">
+    <h4 class=" create-post col-12 ">Update a post</h4>
+    <label>Title:</label>
+    <input id="update-title"  class="form-control">
+    <label>Content:</label>
+    <textarea id="update-content" class="form-control"></textarea>
+    <button id="delete-btn" type="submit" class="btn-update">Delete </button>
+    <button id="update-btn" type="submit" class="btn-update">Update </button>
+</div>
+
+
+                   {{!-- model to create a post  --}}
 <div class="dashboard hidden d-flex justify-content-start" data-userid="{{user_id}}">
-  
     <h4 class=" create-post col-12 ">Create a post</h4>
     <label>Title:</label>
     <input for="title" id="title" class="form-control">
     <label>Content:</label>
     <textarea id="title-content" class="form-control"></textarea>
     <button type="submit" class="btn-create">Create</button>
-
 </div>
 
 <div class="new-post"><button class="new-postBtn">+ New Post</button></div>
