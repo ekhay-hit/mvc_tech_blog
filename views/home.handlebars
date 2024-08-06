@@ -7,6 +7,7 @@
     </div>
     <h1>{{req.session.userId}}</h1>
     <p class=" content">{{post.content}}</p>
+      {{!-- {{#if logged_in}} --}}
     <div class="comment-area hidden">
         <h4 class=" comment-header">Comment</h4>
         <textarea id="comment-text-area" placeholder="Write a comment" ></textarea>
@@ -14,11 +15,11 @@
         <button id="add-comment">Add comment</button>
 
     </div>
-
+     {{!-- {{/if}} --}}
  
 
 </div>
-     
+   
             {{#each comments}}
     <div class="comment-section">
         <div class="cmt-header"></div>
@@ -33,6 +34,9 @@
 
     </div>
   {{/each}}
+
 {{/each}}
 </div>
+ {{#if logged_in}}
 <script type="text/javascript" src="/js/home.js"></script>
+{{/if}}
