@@ -52,10 +52,10 @@ router.patch("/:id", async(req, res)=>{
 
         // retrieve the post after it is updated and return the response
         const updatedPost = await Post.findByPk(post_id);
-        res.status(200).json(updatedPost)
+        res.status(200).json({updatedPost, message:"post update successfully"})
 
     }catch(err){
-        res.status(500).json(err)
+        res.status(500).json({err,message:"failed to update the post"})
        
     }
 })

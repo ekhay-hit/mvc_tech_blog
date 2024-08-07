@@ -3,6 +3,10 @@ const createPost = document.querySelector(".btn-create")
 // finding the post that need to be updated
 const updatepostBtn = document.querySelector(".main-dash");
 const form_input= document.querySelector(".form-group")
+// update botton and delete button
+const updatePostBtn = document.querySelector("#update-btn");
+const deletPostBtn = document.querySelector("#delete-btn");
+
 
 // function handles showing gui for creating a new post
 
@@ -79,8 +83,34 @@ async function updateDeletePost(myPostTitleBtn){
     document.querySelector("#update-content").textContent = post_content;
    
     // after setting all the values show the box
-    showUpdateGui.classList.remove("hidden");
+    showUpdateGui.classList.remove("hidden")
 
+}
+
+async function updatePost(){
+
+    // getting data from the update post GUI
+    const updatePost = document.querySelector(".update-dashboard");
+   const post_id = updatePost.dataset.postid;
+    const title =document.querySelector("#update-title").value.trim();
+    const content = document.querySelector("#update-content").value.trim();
+   console.log(" This will be your updated post")
+    console.log(title, content, post_id);
+
+    if(title, content, post_id){
+        const res = await fetch(`/api/post/${post_id}`,{
+            method:"PATCH",
+            body:JSON.stringify({title, content}),
+            headers:{"Content-Type":"application/json"}
+        })
+        const data = res.json();
+
+        if(res.ok){
+            window.location.reload();
+        }else{
+            document.querySelector("#message").value = data.message
+        }
+    }
 
 }
 
@@ -100,3 +130,7 @@ updatepostBtn.addEventListener("click", (event)=>{
         updateDeletePost(myPostTitleBtn);
     }
 })
+
+// event listner for update the post 
+
+updatePostBtn.addEventListener("click", updatePost);
