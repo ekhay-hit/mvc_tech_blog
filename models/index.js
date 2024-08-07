@@ -5,6 +5,7 @@ const User = require("./User")
 
 // post association
 Post.hasMany(Comment,{
+    onDelete: 'CASCADE',
     foreignKey: "post_id"
 })
 Post.belongsTo(User,{

@@ -59,6 +59,28 @@ router.patch("/:id", async(req, res)=>{
        
     }
 })
+
+//**********************************Delete the post */
+
+router.delete("/:id", async(req, res) =>{
+    const post_id = req.params.id;
+    try{
+        const deletePost = await Post.findByPk(post_id)
+        if(!deletePost){
+            return res.status(404).json({message:"no post with the requested id"})
+        }
+        
+        deletePost.destroy({
+            where:{
+                id:post_id,
+            }
+        })
+        res.status(200).json("post deleted successfully")
+    }catch(err){
+        res.status(500).json(err);
+
+    }
+})
 module.exports = router;
 
 
