@@ -64,6 +64,7 @@
     width: 80%;
     background-color: darkgray;
     padding: 10px;
+
     
     .post-date{
         padding-top:10px;
@@ -72,6 +73,8 @@
     button{
         border: none;
         background-color: transparent;
+        width: 80%;
+        text-align: start;
     }
    
 }
