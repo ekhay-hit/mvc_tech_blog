@@ -55,7 +55,7 @@ if(title && content &&  user_id){
     console.log(data);
 
     if(res.ok){
-        window.location.href = "/";
+        window.location.href = "/dashboard";
 
     }else{
         alert("Failed to add post")
@@ -87,6 +87,7 @@ async function updateDeletePost(myPostTitleBtn){
 
 }
 
+//***********Function will update the post*********** */
 async function updatePost(){
 
     // getting data from the update post GUI
@@ -108,10 +109,35 @@ async function updatePost(){
         if(res.ok){
             window.location.reload();
         }else{
-            document.querySelector("#message").value = data.message
+            document.querySelector("#message").textContent = data.message
         }
     }
 
+}
+
+//**************Function will delete a post  */
+
+async function deletePostHandler(){
+
+    // getting data from the update post GUI
+    const updatePost = document.querySelector(".update-dashboard");
+   const post_id = updatePost.dataset.postid;
+
+
+   if(post_id){
+    const res = await fetch(`/api/post/${post_id}`,{
+        method: "DELETE",
+        body: JSON.stringify({post_id}),
+        headers:{"Content-Type":"application/json"}
+    })
+ 
+  const data = res.json()
+   if(res.ok){
+    window.location.reload();
+   }else{
+    document.querySelector("#message").textContent = data.message
+   }
+   }
 }
 
 // Even listener to show hide the create new post GUI
@@ -134,3 +160,4 @@ updatepostBtn.addEventListener("click", (event)=>{
 // event listner for update the post 
 
 updatePostBtn.addEventListener("click", updatePost);
+deletPostBtn.addEventListener("click", deletePostHandler)
