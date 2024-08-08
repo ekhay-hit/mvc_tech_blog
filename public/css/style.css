@@ -59,3 +59,6 @@
   .hidden{
     display:none !important;
 }
+#userLoggedIn{
+  margin-left:auto;
+}
