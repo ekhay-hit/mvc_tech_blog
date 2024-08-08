@@ -14,6 +14,9 @@
 
                {{!-- model to update a post  --}}
 <div class="update-dashboard hidden  d-flex justify-content-start" data-postid="{{post.id}}">
+    <div class="close">
+    <button class="closeBtnUpdate">X</button>
+    </div>
     <h4 class=" create-post col-12 ">Update a post</h4>
     <label>Title:</label>
     <input id="update-title"  class="form-control">
@@ -27,6 +30,9 @@
 
                    {{!-- model to create a post  --}}
 <div class="dashboard hidden d-flex justify-content-start" data-userid="{{user_id}}">
+     <div class="close">
+    <button class="closeBtnNewpost">X</button>
+    </div>
     <h4 class=" create-post col-12 ">Create a post</h4>
     <label>Title:</label>
     <input for="title" id="title" class="form-control">

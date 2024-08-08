@@ -6,14 +6,18 @@ const form_input= document.querySelector(".form-group")
 // update botton and delete button
 const updatePostBtn = document.querySelector("#update-btn");
 const deletPostBtn = document.querySelector("#delete-btn");
+// target the button to close the gui
 
-
+const closeGuiUpdatePost = document.querySelector(".closeBtnUpdate");
+const closeGuiNewPost = document.querySelector(".closeBtnNewPost");
+const newPostGUI = document.querySelector(".dashboard");
+const updatePostGUI = document.querySelector(".update-dashboard");
 // function handles showing gui for creating a new post
 
 function showCreateNewPost(){
     
     // target the ui
-    const newPostGUI = document.querySelector(".dashboard");
+    
 
     // check if the ui has a hidden class and remove it or add it if not
     if(newPostGUI){
@@ -139,7 +143,25 @@ async function deletePostHandler(){
    }
    }
 }
-
+// fUNCTION THAT WILL HANDEL CLOSE GUI
+function closeGui(btn){
+    console.log("I am in close GUI");
+    console.log(btn);
+    if(btn === closeGuiNewPost){
+        if(newPostGUI.classList.contains('hidden')){
+            newPostGUI.classList.remove("hidden");
+        }else{
+            newPostGUI.classList.add('hidden');
+        }
+        
+    }else if(btn === closeGuiUpdatePost){
+if(updatePostGUI.classList.contains('hidden')){
+        updatePostGUI.classList.remove("hidden");
+        }else{
+            updatePostGUI.classList.add('hidden');
+        }
+    }
+}
 // Even listener to show hide the create new post GUI
 newPost.addEventListener("click", showCreateNewPost);
 
@@ -161,3 +183,15 @@ updatepostBtn.addEventListener("click", (event)=>{
 
 updatePostBtn.addEventListener("click", updatePost);
 deletPostBtn.addEventListener("click", deletePostHandler)
+
+// event listner to close the GUI for update or create new post
+// both calling same function but changed the traget based on parameter passed
+closeGuiNewPost.addEventListener("click",function(){
+closeGui(closeGuiNewPost)
+})  
+closeGuiUpdatePost.addEventListener("click",function(){
+
+    closeGui(closeGuiUpdatePost)
+})
+
+
