@@ -58,6 +58,7 @@ if(title && content &&  user_id){
 
     if(res.ok){
         window.location.href = "/dashboard";
+        window.location.reload("/")
 
     }else{
         alert("Failed to add post")
