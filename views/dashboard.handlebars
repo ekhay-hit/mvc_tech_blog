@@ -7,7 +7,7 @@
 <div class="my-post" data-content="{{post.content}}"  data-postid="{{post.id}}">
     <button id="my-post-title">{{post.title}}</button>
 
-    <h5 class="post-date">5/22/2024</h5>
+    <h5 class="post-date">{{formatDate post.createdAt}}</h5>
     
 </div>
 {{/each}}

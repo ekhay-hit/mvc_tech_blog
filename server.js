@@ -8,9 +8,12 @@ const model= require('./models/index.js')
 const routes = require("./controllers");
 //import for session
 const session = require("express-session")
+const helpers= require("./utils/helpers.js")
 // handlebars
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const hbs = exphbs.create({helpers:{
+  formatDate: helpers.formatDate
+}});
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 //initializing the port and app
 const PORT = process.env.PORT || 3001;
@@ -25,7 +28,7 @@ app.set("view engine","handlebars")
 const mysession = {
     secret: 'sec secret sec',
     cookie: {
-      maxAge: 300000,
+      maxAge: 3000000,
       httpOnly: true,
       secure: false,
       sameSite: 'strict',

@@ -3,7 +3,7 @@
 <div class="post" data-postid="{{post.id}}" data-userid="{{post.user.id}}">
     <div class="post-header">
         <button class="post-title">{{post.title}}</button>
-        <h5>Posted by: {{post.user.name}} on {{post.createdAt}}</h5>
+        <h5>Posted by: {{post.user.name}} on {{formatDate post.createdAt}}</h5>
     </div>
     <h1>{{req.session.userId}}</h1>
     <p class=" content">{{post.content}}</p>
