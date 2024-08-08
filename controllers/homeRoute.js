@@ -34,14 +34,14 @@ route.get("", async(req,res)=>{
     )
     // serialize data to keep a plain json 
     const posts = data.map((post)=>post.get({plain:true}));
-    // console.log(posts);
+ 
 
 
     res.render("home",{posts, logged_in: req.session.logged_in, user_name:req.session.name, user_id:req.session.userId})
 
     }catch(err){
         res.status(500).json(err);
-        // console.log(err);
+   
     }
 })
 // return dashboard **********************************************************************

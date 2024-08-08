@@ -35,7 +35,7 @@ function showCreateNewPost(){
 //*************Adding a new post  */
 
 async function handleNewPost(event){
-    console.log("You are about to add post");
+ 
     //target element to get input 
    const title_input = document.querySelector("#title");
    const content_input= document.querySelector("#title-content");
@@ -44,8 +44,6 @@ const title = title_input.value.trim();
 const content= content_input.value.trim();
 // getting the user_id that is signed in
 const user_id= document.querySelector(".dashboard").dataset.userid;
-console.log("I am printing the post content");
-console.log(title, content, user_id);
 
 // check if there is all the value needed
 if(title && content &&  user_id){
@@ -56,7 +54,7 @@ if(title && content &&  user_id){
     });
 
     const data = await res.json()
-    console.log(data);
+
 
     if(res.ok){
         window.location.href = "/dashboard";
@@ -71,9 +69,8 @@ if(title && content &&  user_id){
 //*****************Functin that handle opening the GUI to update or delet post and add the data of the post to it */
 
 async function updateDeletePost(myPostTitleBtn){
-    console.log("you have clicked post to update it");
+   
     const currentPost = myPostTitleBtn.closest(".my-post") 
-    console.log(currentPost);
 
     //get the data of the post that is clicked
     const post_title = currentPost.querySelector("#my-post-title").textContent.trim();
@@ -99,8 +96,6 @@ async function updatePost(){
    const post_id = updatePost.dataset.postid;
     const title =document.querySelector("#update-title").value.trim();
     const content = document.querySelector("#update-content").value.trim();
-   console.log(" This will be your updated post")
-    console.log(title, content, post_id);
 
     if(title, content, post_id){
         const res = await fetch(`/api/post/${post_id}`,{
@@ -145,8 +140,6 @@ async function deletePostHandler(){
 }
 // fUNCTION THAT WILL HANDEL CLOSE GUI
 function closeGui(btn){
-    console.log("I am in close GUI");
-    console.log(btn);
     if(btn === closeGuiNewPost){
         if(newPostGUI.classList.contains('hidden')){
             newPostGUI.classList.remove("hidden");

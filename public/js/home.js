@@ -21,7 +21,7 @@ function commentArea(togleCmtAreaBtn){
 // ***********Function that handle add comment to a post******
 
 async function addCommentHandler(addCommentBtn){
-    console.log("button to add a comment clicked");
+    
     const currentPost = addCommentBtn.closest(".post");
     
     // getting comment content
@@ -33,7 +33,7 @@ async function addCommentHandler(addCommentBtn){
     // getting the user that loggs in from data-loggedinuserid that was set in the list of the post
     const user_id = document.querySelector(".posts-list").getAttribute("data-loggedinuserid");
 
-    console.log(content, post_id, user_id);
+  
     
     // if all required field for create new post make a fetch call
 
@@ -44,7 +44,7 @@ async function addCommentHandler(addCommentBtn){
             headers:{"Content-Type":"application/json"},
         })
         const data= await res.json();
-        console.log(data);
+      
         if(res.ok){
             window.location.reload();
         }else{
