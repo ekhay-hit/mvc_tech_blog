@@ -1,64 +1,70 @@
 :root {
-    --primary: #989AA3;
-    --secondary: #f5a25d;
-    --tertiary: #fa7f72;
-    --quatrinary: #adb4c3;
-    --light: #ebebeb;
-    --dark: #182c23;
-    --border-radius: 0.3rem;
-  }
-  
-  body {
-    font-family: Arial;
-    margin: 0;
-    display: flex;
-    font-size: 25px;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: flex-start;
-    background-color: var(--quatrinary);
-  }
-  
-  header {
- 
-    padding: 30px;
-    height: 100px;
-    gap:20px;
-    text-align: center;
-    background: rgb(169, 167, 167);
-    color: white;
-    border-bottom-style: solid;
-    a{
-      color: white;
-      text-decoration: none;
-      
-     }
-  }
-  
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1;
-  }
-  
- 
-  nav {
-    display: flex;
-    background-color: var(--secondary);
-  }
- 
-  
-  /* LAYOUT */
-  .container {
-    display: flex;
-    flex-flow: column wrap;
-    align-content: flex-start;
-    align-items: center;
-  }
-  
-  .hidden{
-    display:none !important;
+  --primary: #989aa3;
+  --secondary: #f5a25d;
+  --tertiary: #fa7f72;
+  --quatrinary: #adb4c3;
+  --light: #ebebeb;
+  --dark: #182c23;
+  --border-radius: 0.3rem;
 }
-#userLoggedIn{
-  margin-left:auto;
+
+body {
+  font-family: Arial;
+  margin: 0;
+  display: flex;
+  font-size: 25px;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start;
+  background-color: var(--quatrinary);
+}
+
+header,
+footer {
+  padding: 30px;
+  height: 100px;
+  gap: 20px;
+  text-align: center;
+  background: rgb(169, 167, 167);
+  color: white;
+  border-bottom-style: solid;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+footer {
+  margin-top: 100px;
+}
+
+#footer-content {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+nav {
+  display: flex;
+  background-color: var(--secondary);
+}
+
+/* LAYOUT */
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
+#userLoggedIn {
+  margin-left: auto;
 }
