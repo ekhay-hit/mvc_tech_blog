@@ -1,97 +1,93 @@
-.main-dash{
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
-    padding:10px;
-    justify-content: center;
-
+.main-dash {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  padding: 10px;
+  justify-content: center;
+  margin-bottom: 100px;
 }
 
+.dashboard,
+.update-dashboard {
+  margin-top: 150px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 60%;
+  padding: 20px;
+  background-color: rgb(195, 192, 188);
+  border-radius: 10px;
+  box-shadow: 3px 3px 4px 4px gray;
 
-.dashboard, .update-dashboard{
-    margin-top:150px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap:8px;
-    width: 60%;
-    padding:20px;
-    background-color: rgb(195, 192, 188);
-    border-radius: 10px;
-    box-shadow: 3px 3px 4px 4px gray;
-
-    input{
-        font-size: 20px;
-    }
-    textarea{
-        font-size: 20px;
-    }
-
+  input {
+    font-size: 20px;
+  }
+  textarea {
+    font-size: 20px;
+  }
 }
 
-.create-post{
-    background-color: rgb(176, 175, 173); ;
-   box-shadow:2px 2px 3px 3px rgb(168, 165, 162);
-   padding: 10px;
-   border-radius: 25px;
+.create-post {
+  background-color: rgb(176, 175, 173);
+  box-shadow: 2px 2px 3px 3px rgb(168, 165, 162);
+  padding: 10px;
+  border-radius: 25px;
 }
 
-
-.btn-create , .btn-update{
-    margin:auto;
-    margin-top:20px;
-    border-radius: 5px;
-    width: 100%;
-    background-color: rgb(168, 168, 181);
-    color:white;
+.btn-create,
+.btn-update {
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  width: 100%;
+  background-color: rgb(168, 168, 181);
+  color: white;
 }
 
 /* style for new post button */
-.new-post{
-    position: relative;
-    /* top: 75%; */
-    margin-top:40px;
-    width: 100%;
-    display:flex;
-    justify-content: center;
+.new-post {
+  position: relative;
+  /* top: 75%; */
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.new-postBtn{
-    width: 200px;
-    background-color: rgb(48, 48, 50);
-    border-radius: 10px;
-    color:white;
-
+.new-postBtn {
+  width: 200px;
+  background-color: rgb(48, 48, 50);
+  border-radius: 10px;
+  color: white;
 }
 
-.my-post{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    margin-bottom: 10px;
+.my-post {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 80%;
+  background-color: darkgray;
+  padding: 10px;
+
+  .post-date {
+    padding-top: 10px;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
     width: 80%;
-    background-color: darkgray;
-    padding: 10px;
-
-    
-    .post-date{
-        padding-top:10px;
-    }
-
-    button{
-        border: none;
-        background-color: transparent;
-        width: 80%;
-        text-align: start;
-    }
-   
+    text-align: start;
+  }
 }
 
-.close{
-    width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-    button{
-        border:none;
-        background-color: transparent;
-    }
+.close {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  button {
+    border: none;
+    background-color: transparent;
+  }
 }

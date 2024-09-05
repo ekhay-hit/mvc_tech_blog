@@ -1,49 +1,58 @@
-
 {{!-- <h1>{{user_id}}</h1> --}}
 
- {{#if logged_in}}
- <div class=" main-dash">
-{{#each mypost as |post|}}
-<div class="my-post" data-content="{{post.content}}"  data-postid="{{post.id}}">
-    <button id="my-post-title">{{post.title}}</button>
+{{#if logged_in}}
 
-    <h5 class="post-date">{{formatDate post.createdAt}}</h5>
-    
-</div>
-{{/each}}
+  <div class="main-dash">
+    {{#each mypost as |post|}}
+      <div
+        class="my-post"
+        data-content="{{post.content}}"
+        data-postid="{{post.id}}"
+      >
+        <button id="my-post-title">{{post.title}}</button>
 
-               {{!-- model to update a post  --}}
-<div class="update-dashboard hidden  d-flex justify-content-start" data-postid="{{post.id}}">
-    <div class="close">
-    <button class="closeBtnUpdate">X</button>
+        <h5 class="post-date">{{formatDate post.createdAt}}</h5>
+
+      </div>
+    {{/each}}
+
+    {{! model to update a post  }}
+    <div
+      class="update-dashboard hidden d-flex justify-content-start"
+      data-postid="{{post.id}}"
+    >
+      <div class="close">
+        <button class="closeBtnUpdate">X</button>
+      </div>
+      <h4 class="create-post col-12">Update a post</h4>
+      <label>Title:</label>
+      <input id="update-title" class="form-control" />
+      <label>Content:</label>
+      <textarea id="update-content" class="form-control"></textarea>
+      <button id="update-btn" type="submit" class="btn-update">Update </button>
+      <button id="delete-btn" type="submit" class="btn-update">Delete </button>
+      <h4 id="message"></h4>
     </div>
-    <h4 class=" create-post col-12 ">Update a post</h4>
-    <label>Title:</label>
-    <input id="update-title"  class="form-control">
-    <label>Content:</label>
-    <textarea id="update-content" class="form-control"></textarea>
-    <button id="update-btn" type="submit" class="btn-update">Update </button>
-    <button id="delete-btn" type="submit" class="btn-update">Delete </button>
-    <h4 id="message"></h4>
-</div>
 
+    {{! model to create a post  }}
+    <div
+      class="dashboard hidden d-flex justify-content-start"
+      data-userid="{{user_id}}"
+    >
+      <div class="close">
+        <button class="closeBtnNewpost">X</button>
+      </div>
+      <h4 class="create-post col-12">Create a post</h4>
+      <label>Title:</label>
+      <input for="title" id="title" class="form-control" />
+      <label>Content:</label>
+      <textarea id="title-content" class="form-control"></textarea>
+      <button type="submit" class="btn-create">Create</button>
 
-                   {{!-- model to create a post  --}}
-<div class="dashboard hidden d-flex justify-content-start" data-userid="{{user_id}}">
-     <div class="close">
-    <button class="closeBtnNewpost">X</button>
     </div>
-    <h4 class=" create-post col-12 ">Create a post</h4>
-    <label>Title:</label>
-    <input for="title" id="title" class="form-control">
-    <label>Content:</label>
-    <textarea id="title-content" class="form-control"></textarea>
-    <button type="submit" class="btn-create">Create</button>
-    
-</div>
 
-<div class="new-post"><button class="new-postBtn">+ New Post</button></div>
+    <div class="new-post"><button class="new-postBtn">+ New Post</button></div>
 
-</div>
-<script type="text/javascript" src="/js/dashboard.js"></script>
+  </div>
+  <script type="text/javascript" src="/js/dashboard.js"></script>
 {{/if}}
